@@ -67,7 +67,7 @@ const patientInfoSchema = new mongoose_1.Schema({
     ],
 });
 const healthInfoSchema = new mongoose_1.Schema({
-    disease: { type: String, lowercase: true },
+    diseaseName: { type: String, lowercase: true },
     sublink: [
         {
             name: String,

@@ -171,7 +171,7 @@ export const Healthinfo = () => {
                         }}
                       />
                     </div>
-                    <h3>{i.disease}</h3>
+                    <h3>{i.diseaseName}</h3>
                     <ul className="links-wrapper">
                       {i.sublink?.map((l: any) => {
                         return (

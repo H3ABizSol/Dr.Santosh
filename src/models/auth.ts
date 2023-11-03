@@ -71,7 +71,7 @@ const patientInfoSchema = new Schema({
 });
 
 const healthInfoSchema = new Schema({
-  disease: { type: String, lowercase: true },
+  diseaseName: { type: String, lowercase: true },
   sublink: [
     {
       name: String,

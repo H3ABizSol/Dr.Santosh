@@ -165,7 +165,7 @@ const Consulation = () => {
                 </a>
               </div>
               <div className="items whatsapp">
-                <h3>whats app</h3>
+                <h3>whatsApp</h3>
                 <a
                   href={`https://api.whatsapp.com/send?phone=${consulation?.whatsappnumber}`}
                 >

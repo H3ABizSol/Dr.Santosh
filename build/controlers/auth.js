@@ -419,7 +419,7 @@ const createHealthInfo = async (req, res, next) => {
             });
         });
         const patientInformation = await auth_1.healthInfo.create({
-            disease,
+            diseaseName: disease,
             sublink,
         });
         res.json({ success: true, patientInformation });
@@ -453,7 +453,7 @@ const updateHealthInfo = async (req, res, next) => {
         });
         const patientInformation = await auth_1.healthInfo.findByIdAndUpdate(req.params.id, {
             $set: {
-                disease,
+                diseaseName: disease,
                 sublink,
             },
         });

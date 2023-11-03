@@ -1,11 +1,11 @@
 import React from "react";
 import { Layout } from "../../../Layout/Layout";
-import { AiOutlineHome, AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { MdOutlineTopic } from "react-icons/md";
 import { SiAboutdotme } from "react-icons/si";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { BiLogoBlogger } from "react-icons/bi";
-import { FaDisease } from "react-icons/fa";
+// import { FaDisease } from "react-icons/fa";
 import "./style.scss";
 import { Link } from "react-router-dom";
 
@@ -15,12 +15,12 @@ export const Adminlayout = ({ children }: React.PropsWithChildren) => {
       <div className="admin-layout">
         <div className="left-admin">
           <ul>
-            <Link to="/admin" className="link">
+            {/* <Link to="/admin" className="link">
               <li>
                 <AiOutlineHome size={20} />
                 Dashboard
               </li>
-            </Link>
+            </Link> */}
             <Link to="/admin/about" className="link">
               <li>
                 <SiAboutdotme size={20} />
@@ -30,14 +30,14 @@ export const Adminlayout = ({ children }: React.PropsWithChildren) => {
             <Link to="/admin/patientinformation" className="link">
               <li>
                 <MdOutlineTopic size={20} />
-                Patient Information
+                Useful Websites
               </li>
             </Link>
 
             <Link to="/admin/healthinformation" className="link">
               <li>
                 <AiOutlineFundProjectionScreen size={20} />
-                Health Information
+                Disease Catalog
               </li>
             </Link>
             <Link to="/admin/onlineconsulation" className="link">
@@ -58,12 +58,12 @@ export const Adminlayout = ({ children }: React.PropsWithChildren) => {
                 Appoitment
               </li>
             </Link> */}
-            <Link to="/admin/disease" className="link">
+            {/* <Link to="/admin/disease" className="link">
               <li>
                 <FaDisease size={20} />
                 Disease
               </li>
-            </Link>
+            </Link> */}
             <Link to="/admin/blog" className="link">
               <li>
                 <BiLogoBlogger size={20} />

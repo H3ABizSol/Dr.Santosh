@@ -2,13 +2,16 @@ import React from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
+// import Healthinfo from "../../Pages/Healthinfo/Healthinfo";
 
 export const Header = () => {
-  const [diseaseDetails, setDiseaseDetails] = React.useState([] as any);
-  const [disease, setDisease] = React.useState([] as any);
+  // const [diseaseDetails, setDiseaseDetails] = React.useState([] as any);
+  const [blogs, setBlogs] = React.useState([] as any);
 
   const [patientInfo, setPatientInfo] = React.useState([] as any);
+  const [healthInfo, setHealthInfo] = React.useState([] as any);
+
   const [serachBool, setSerachBool] = React.useState(false);
   const [patientInfoSerachVal, setPatientInfoSearachVal] = React.useState(
     [] as any
@@ -29,23 +32,27 @@ export const Header = () => {
         }
       });
     });
-    const diseaseinfo = disease.filter((p: any) => {
-      if (p.diseaseName.toLowerCase().includes(e.target.value.toLowerCase())) {
-        setSerachBool(true);
-        return p;
+    const bloginfo = blogs.filter((b: any) => {
+      if (b.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+        return b;
+      }
+    });
+    const healthinfo = healthInfo.filter((h: any) => {
+      if (h.diseaseName.toLowerCase().includes(e.target.value.toLowerCase())) {
+        return h;
       }
     });
 
-    setPatientInfoSearachVal([...patieninfo, ...diseaseinfo]);
+    setPatientInfoSearachVal([...patieninfo, ...bloginfo, ...healthinfo]);
     if (e.target.value == "") {
       setSerachBool(false);
     }
   };
 
-  const getDiseaseDetails = async () => {
-    const { data } = await axios.get("/api/auth/disease/get");
-    setDiseaseDetails([...data.disease]);
-  };
+  // const getDiseaseDetails = async () => {
+  //   const { data } = await axios.get("/api/auth/disease/get");
+  //   setDiseaseDetails([...data.disease]);
+  // };
 
   const getPatientInfo = async () => {
     const { data } = await axios.get("/api/auth/patientinfo/get");
@@ -54,18 +61,36 @@ export const Header = () => {
       setPatientInfo([...data.patientInformation]);
     }
   };
-  const getDisease = async () => {
-    const { data } = await axios.get("/api/auth/disease/get");
+
+  const getBlogs = async () => {
+    const { data } = await axios.get("/api/auth/blog/get");
     if (data.success) {
-      setDisease([...data.disease]);
+      setBlogs([...data.allBlogs]);
     }
   };
 
+  const getHealthInfo = async () => {
+    const { data } = await axios.get("/api/auth/healthinfo/get");
+    setHealthInfo([...data.healthInformation]);
+    // const groupedWords: any = {};
+    // data.healthInformation.forEach((word: any) => {
+    //   const firstLetter = word.disease[0].toUpperCase();
+    //   if (!groupedWords[firstLetter]) {
+    //     groupedWords[firstLetter] = [];
+    //   }
+    //   groupedWords[firstLetter].push(word);
+    // });
+    // setGroupWord(groupedWords);
+  };
+
   React.useEffect(() => {
-    getDiseaseDetails();
+    // getDiseaseDetails();
     getPatientInfo();
-    getDisease();
+    getBlogs();
+    getHealthInfo();
   }, []);
+
+  console.log(patientInfoSerachVal);
 
   return (
     <header>
@@ -74,7 +99,8 @@ export const Header = () => {
           <div className="logo-container">
             <Link to="/" className="link">
               <h2>
-                DR Santosh chaubey,FRACP(endocrinology)@ThePracticalDoctor.com
+                <AiOutlineHome className="home-icon" /> DR Santosh
+                chaubey,FRACP(endocrinology)@ThePracticalDoctor.com
               </h2>
             </Link>
           </div>
@@ -106,7 +132,7 @@ export const Header = () => {
               <a href="/patientinformation/all" className="link">
                 <li>useful websites</li>
               </a>{" "}
-              <li style={{ color: "#551A8B" }}>
+              {/* <li style={{ color: "#551A8B" }}>
                 Diseases
                 <ul className="sub-menu-ul">
                   {diseaseDetails.length > 0 &&
@@ -120,13 +146,13 @@ export const Header = () => {
                       );
                     })}
                 </ul>
-              </li>
+              </li> */}
               <Link to="/blogs" className="link">
                 <li>Blogs</li>
               </Link>
-              <Link to="/healthinformation" className="link">
-                <li>Healthinfo</li>
-              </Link>{" "}
+              <a href="/healthinformation/all" className="link">
+                <li>Disease Catalogue</li>
+              </a>{" "}
               <Link to="/consulation" className="link">
                 <li>online consultaion</li>
               </Link>{" "}
@@ -148,9 +174,23 @@ export const Header = () => {
                   {patientInfoSerachVal &&
                     patientInfoSerachVal.map((p: any) => {
                       return (
-                        <a href={`/patientinformation/${p.disease}`}>
-                          <li>{p.disease ? p.disease : p.diseaseName}</li>
-                        </a>
+                        <>
+                          {p.diseaseName && (
+                            <a href={`/healthinformation/${p.diseaseName}`}>
+                              <li>{p.diseaseName}</li>
+                            </a>
+                          )}
+                          {p.disease && (
+                            <a href={`/patientinformation/${p.disease}`}>
+                              <li>{p.disease}</li>
+                            </a>
+                          )}
+                          {p.title && (
+                            <a href={`/blogs/${p._id}`}>
+                              <li>{p.title}</li>
+                            </a>
+                          )}
+                        </>
                       );
                     })}
                 </ul>
@@ -184,25 +224,27 @@ export const Header = () => {
             <a href="/patientinformation/all" className="link">
               <li>useful websites</li>
             </a>{" "}
-            <li style={{ color: "#551A8B" }}>
-              Diseases
-              <ul className="sub-menu-ul">
-                {diseaseDetails.length > 0 &&
-                  diseaseDetails.map((d: any) => {
-                    return (
-                      <a href={`/disease/${d.diseaseName}`} className="link">
-                        <li style={{ fontSize: "1.2rem" }}>{d.diseaseName}</li>
-                      </a>
-                    );
-                  })}
-              </ul>
-            </li>
+            {/* <li style={{ color: "#551A8B" }}>
+                Diseases
+                <ul className="sub-menu-ul">
+                  {diseaseDetails.length > 0 &&
+                    diseaseDetails.map((d: any) => {
+                      return (
+                        <a href={`/disease/${d.diseaseName}`} className="link">
+                          <li style={{ fontSize: "1.2rem" }}>
+                            {d.diseaseName}
+                          </li>
+                        </a>
+                      );
+                    })}
+                </ul>
+              </li> */}
             <Link to="/blogs" className="link">
               <li>Blogs</li>
             </Link>
-            <Link to="/healthinformation" className="link">
-              <li>Healthinfo</li>
-            </Link>{" "}
+            <a href="/healthinformation/all" className="link">
+              <li>Disease Catalogue</li>
+            </a>{" "}
             <Link to="/consulation" className="link">
               <li>online consultaion</li>
             </Link>{" "}

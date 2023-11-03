@@ -47,7 +47,7 @@ export const Consulation = () => {
               </a>
             </div>
             <div className="items whatsapp">
-              <h5> what's app</h5>
+              <h5> WhatsApp</h5>
               <a
                 href={`https://api.whatsapp.com/send?phone=${consulation.whatsappnumber}`}
               >

@@ -2,15 +2,19 @@ import React from "react";
 import { Layout } from "../../Layout/Layout";
 import "./style.scss";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 const Healthinfo = () => {
   const [groupWord, setGroupWord] = React.useState({} as any);
   const [groupWordSearch, setGroupWordSearch] = React.useState({} as any);
   const [isSearch, setIsSearch] = React.useState(false);
+  const params = useParams();
 
   const search = (e: any) => {
     Object.keys(groupWord).map((i: any) => {
       groupWord[i].find((f: any) => {
-        if (f.disease.toLowerCase().includes(e.target.value.toLowerCase())) {
+        if (
+          f.diseaseName.toLowerCase().includes(e.target.value.toLowerCase())
+        ) {
           setIsSearch(true);
           setGroupWordSearch({ [i]: [f] });
         }
@@ -29,16 +33,27 @@ const Healthinfo = () => {
 
   const getHealthInfo = async () => {
     const { data } = await axios.get("/api/auth/healthinfo/get");
-    console.log(data);
     const groupedWords: any = {};
     data.healthInformation.forEach((word: any) => {
-      const firstLetter = word.disease[0].toUpperCase();
+      const firstLetter = word.diseaseName[0].toUpperCase();
       if (!groupedWords[firstLetter]) {
         groupedWords[firstLetter] = [];
       }
       groupedWords[firstLetter].push(word);
     });
     setGroupWord(groupedWords);
+
+    if (params.name === "all") {
+    } else {
+      Object.keys(groupedWords).map((i: any) => {
+        groupedWords[i].find((f: any) => {
+          if (f.diseaseName.toLowerCase().includes(params.name)) {
+            setIsSearch(true);
+            setGroupWordSearch({ [i]: [f] });
+          }
+        });
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -68,7 +83,7 @@ const Healthinfo = () => {
                   {groupWord[i].map((c: any) => {
                     return (
                       <div className="items">
-                        <h3>{c.disease}</h3>
+                        <h3>{c.diseaseName}</h3>
                         <ul className="links-wrapper">
                           {c.sublink?.map((l: any) => {
                             return (
@@ -93,7 +108,7 @@ const Healthinfo = () => {
                   {groupWord[i].map((c: any) => {
                     return (
                       <div className="items">
-                        <h3>{c.disease}</h3>
+                        <h3>{c.diseaseName}</h3>
                         <ul className="links-wrapper">
                           {c.sublink?.map((l: any) => {
                             return (

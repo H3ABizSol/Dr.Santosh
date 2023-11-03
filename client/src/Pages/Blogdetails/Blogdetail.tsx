@@ -27,7 +27,7 @@ export const Blogdetails = () => {
           <h3>{blogs.title}</h3>
           <div className="img-container">
             <figure>
-              <img src={`/uploads/${blogs.image}`} alt="" />
+              <img src={`${blogs.image}`} alt="" />
             </figure>
           </div>
           <pre>{blogs.blogdesc}</pre>

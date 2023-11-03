@@ -4,6 +4,7 @@ import {
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoLinkedin,
+  BiLogoYoutube,
 } from "react-icons/bi";
 
 export const Footer = () => {
@@ -28,6 +29,11 @@ export const Footer = () => {
                   <BiLogoLinkedin size={40} />
                 </a>
               </li>
+              <li>
+                <a href="tel:+">
+                  <BiLogoYoutube size={40} />
+                </a>
+              </li>
             </ul>
           </ul>
         </div>
@@ -35,13 +41,13 @@ export const Footer = () => {
           <ul>
             <ul>
               <Link to="/consulation" className="link">
-                <li>online consultaion</li>
+                <li>Online Consultaion</li>
               </Link>{" "}
               <a href="/patientinformation/all" className="link">
-                <li>Patientinfo</li>
+                <li>Useful Websites</li>
               </a>{" "}
-              <Link to="/healthinformation" className="link">
-                <li>Healthinfo</li>
+              <Link to="/healthinformation/all" className="link">
+                <li>Disease Catalogue</li>
               </Link>{" "}
               {/* <li style={{ color: "#551A8B" }}>
                 Diseases

@@ -35,7 +35,7 @@ const routes = () => {
         path="/patientinformation/:name"
         element={<Patientifnormation />}
       />
-      <Route path="/healthinformation" element={<Healthinformation />} />
+      <Route path="/healthinformation/:name" element={<Healthinformation />} />
 
       <Route path="/about" element={<HomeAbout />} />
       <Route path="disease/:name" element={<Diseasedetails />} />

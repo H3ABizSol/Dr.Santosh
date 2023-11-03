@@ -437,7 +437,7 @@ const createHealthInfo = async (
       });
     });
     const patientInformation = await healthInfo.create({
-      disease,
+      diseaseName: disease,
       sublink,
     });
     res.json({ success: true, patientInformation });
@@ -479,7 +479,7 @@ const updateHealthInfo = async (
       req.params.id,
       {
         $set: {
-          disease,
+          diseaseName: disease,
           sublink,
         },
       }

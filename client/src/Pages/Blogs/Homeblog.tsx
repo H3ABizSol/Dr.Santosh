@@ -26,7 +26,6 @@ export const Homeblog = () => {
     }
   };
 
-  console.log(searchBlogs);
   React.useEffect(() => {
     getBlogs();
   }, []);
