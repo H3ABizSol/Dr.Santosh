@@ -61,16 +61,17 @@ export const About = () => {
                 {languageAboutDesc && languageAboutDesc.aboutdesc}
               </motion.pre>
             </div>
-
-            <Link to="/about">
-              <motion.button
-                initial={{ x: -100 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                More
-              </motion.button>
-            </Link>
+            <div className="btn-container">
+              <Link to="/about">
+                <motion.button
+                  initial={{ x: -100 }}
+                  animate={{ x: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  More
+                </motion.button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
