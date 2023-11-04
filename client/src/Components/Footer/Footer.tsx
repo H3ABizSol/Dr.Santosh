@@ -15,22 +15,34 @@ export const Footer = () => {
           <ul>
             <ul>
               <li>
-                <a href="tel:+">
+                <a
+                  href="https://www.facebook.com/people/The-Practical-Doctor/61552908999749/?mibextid=ZbWKwL"
+                  target="_blank"
+                >
                   <BiLogoFacebook size={40} />
                 </a>
               </li>
               <li>
-                <a href="tel:+">
+                <a
+                  href="https://www.instagram.com/thepracticaldoctorindia/?igshid=YTQwZjQ0NmI0OA%3D%3D"
+                  target="_blank"
+                >
                   <BiLogoInstagram size={40} />
                 </a>
               </li>
               <li>
-                <a href="tel:+">
+                <a
+                  href="https://www.youtube.com/@thepracticaldoctorindia"
+                  target="_blank"
+                >
                   <BiLogoLinkedin size={40} />
                 </a>
               </li>
               <li>
-                <a href="tel:+">
+                <a
+                  href="https://www.youtube.com/@thepracticaldoctorindia"
+                  target="_blank"
+                >
                   <BiLogoYoutube size={40} />
                 </a>
               </li>
@@ -40,14 +52,17 @@ export const Footer = () => {
         <div className="footer-details">
           <ul>
             <ul>
-              <Link to="/consulation" className="link">
-                <li>Online Consultaion</li>
-              </Link>{" "}
               <a href="/patientinformation/all" className="link">
                 <li>Useful Websites</li>
               </a>{" "}
+              <Link to="/blogs" className="link">
+                <li>Blogs</li>
+              </Link>
               <Link to="/healthinformation/all" className="link">
                 <li>Disease Catalogue</li>
+              </Link>{" "}
+              <Link to="/consulation" className="link">
+                <li>Online Consultaion</li>
               </Link>{" "}
               {/* <li style={{ color: "#551A8B" }}>
                 Diseases
@@ -64,9 +79,6 @@ export const Footer = () => {
                     })}
                 </ul>
               </li> */}
-              <Link to="/blogs" className="link">
-                <li>Blogs</li>
-              </Link>
             </ul>
           </ul>
         </div>

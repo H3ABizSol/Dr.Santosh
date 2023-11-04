@@ -33,6 +33,7 @@
         .blog-items{
             border: 1px solid rgb(229, 229, 229);
             min-height: 360px;
+            padding: 1.2rem 0;
             @media screen and (max-width:768px) { 
                 min-height: 300px;
           }
@@ -82,7 +83,7 @@
                        font-size: 1.6rem;
                        font-family: "Lato";
                        text-align: justify;
-                       height:230px;
+                       height:226px;
                        overflow: hidden;
                        padding: 0 1.2rem;
                        margin-top: 2rem;

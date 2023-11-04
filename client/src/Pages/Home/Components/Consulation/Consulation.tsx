@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import "./style.scss";
-import axios from "axios";
+// import axios from "axios";
 import { motion } from "framer-motion";
 
 export const Consulation = () => {
-  const [diseaseDetails, setDiseaseDetails] = React.useState([] as any);
+  // const [diseaseDetails, setDiseaseDetails] = React.useState([] as any);
 
-  const getDiseaseDetails = async () => {
-    const { data } = await axios.get("/api/auth/disease/get");
-    setDiseaseDetails([...data.disease]);
-  };
+  // const getDiseaseDetails = async () => {
+  //   const { data } = await axios.get("/api/auth/disease/get");
+  //   setDiseaseDetails([...data.disease]);
+  // };
   React.useEffect(() => {
-    getDiseaseDetails();
+    // getDiseaseDetails();
   }, []);
   return (
     <div className="consulation-wrapper">
       <div className="container">
-        <motion.div
+        {/* <motion.div
           className="counts"
           initial={{ opacity: 0, scale: 1.2 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -33,7 +33,7 @@ export const Consulation = () => {
                 </div>
               );
             })}
-        </motion.div>
+        </motion.div> */}
         <motion.div
           className="paralax"
           initial={{ x: -100 }}
