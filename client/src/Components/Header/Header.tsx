@@ -98,10 +98,18 @@ export const Header = () => {
         <div className="left">
           <div className="logo-container">
             <Link to="/" className="link">
-              <h2>
+              <h2 className="desktop-logo">
                 <AiOutlineHome className="home-icon" /> DR Santosh
                 chaubey,FRACP(endocrinology)@ThePracticalDoctor.com
               </h2>
+              <div className="mobile-logo">
+                <AiOutlineHome className="home-icon" />
+                <div>
+                  <h2>DR Santosh chaubey</h2>
+                  <h2>FRACP(endocrinology)</h2>
+                  <h2>@ThePracticalDoctor.com</h2>
+                </div>
+              </div>
             </Link>
           </div>
           <div

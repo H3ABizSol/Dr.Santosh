@@ -25,7 +25,21 @@ header{
              
           }
              .logo-container{
-                h2{
+                .mobile-logo{
+                    display: none;
+                    @media screen and (max-width:1166px){
+                          display: block;
+                          display: flex;
+                          align-items: center;
+                          font-size: 1.2rem;
+                          gap: 1.5rem;
+                          .home-icon{
+                            font-size: 2.2rem;
+                          }
+                  }
+                }
+                
+                .desktop-logo{
                     font-size: 1.5vw;
                     letter-spacing: 0.4rem;
                     text-transform: capitalize;
@@ -35,9 +49,11 @@ header{
                  
                     @media screen and (max-width:1166px){
                         word-break: break-all;
-                        font-size: 1.5rem;
+                        font-size: 1.6rem;
+                        width: 90%;
                         letter-spacing: 0.1rem;
                         padding: 0 1rem;
+                        display: none;
                         .home-icon{
                             font-size: 6rem;
                         }
@@ -51,6 +67,9 @@ header{
                       display: block;
                       width: 50%;
                       text-align: end;
+                      .mobile-logo{
+                        display: block;
+                      }
                    
                 }
              }
